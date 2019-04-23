@@ -11,15 +11,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
-gas_data <- read_csv("Gas_Data_Tidy.csv")
+library(janitor)
+gas_data <- read_csv("Gas_Data_Tidy.csv") %>% 
+  clean_names()
 
 ```
 
 ***Part 1: Aggregate Daily Demand Curve
 
 ```{r}
-gas_ag_plot <- ggplot(gas_data, aes(x = quantity, y = Price_Dollars)) +
-  geom_line(aes(color = Class))
+#quick plot
+gas_ag_plot <- ggplot(gas_data, aes(x = quantity, y = price_dollars)) +
+  geom_smooth(aes(color = class))
+
+gas_ag_plot
+
+high_reg = lm(price_dollars~quantity, data = gas_data)
+high_reg
+
 ```
 
 ***Part 2: How is the current consumer benefit divided?
