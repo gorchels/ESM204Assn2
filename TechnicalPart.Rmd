@@ -17,6 +17,8 @@ gas_data <- read_csv("Gas_Data_Tidy.csv") %>%
 
 ```
 
+Work divide: Whoever finishes 1-2 does 5-6, other person does 3-4 and starts the memo 
+
 ***Part 1: Aggregate Daily Demand Curve
 
 ```{r}
