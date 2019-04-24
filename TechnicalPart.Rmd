@@ -23,13 +23,18 @@ Work divide: Whoever finishes 1-2 does 5-6, other person does 3-4 and starts the
 
 ```{r}
 #quick plot
-gas_ag_plot <- ggplot(gas_data, aes(x = quantity, y = price_dollars)) +
-  geom_smooth(aes(color = class))
 
 gas_ag_plot
 
 high_reg = lm(price_dollars~quantity, data = gas_data)
 high_reg
+
+high_mod = as.data.frame(predict(high_reg,data.frame(quantity=c(0:150000)))) %>% 
+  rename(quantity == predict(high_reg,data.frame(quantity=c(0:150000))))
+
+gas_ag_plot <- ggplot(gas_data, aes(x = quantity, y = price_dollars)) +
+  geom_smooth(aes(color = class))+
+  geom_smooth(high_mod, aes(x = predict(high_reg,data.frame(quantity=c(0:150000)))))
 
 ```
 
