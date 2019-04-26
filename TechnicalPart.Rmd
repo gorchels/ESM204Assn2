@@ -23,19 +23,18 @@ Work divide: Whoever finishes 1-2 does 5-6, other person does 3-4 and starts the
 
 ```{r}
 #quick plot
+high_con = gas_data %>% 
+  filter(class == "Q_High_Gallons_per_Day")
 
-gas_ag_plot
+low_con = gas_data %>% 
+  filter(class != "Q_High_Gallons_per_Day")
 
-high_reg = lm(price_dollars~quantity, data = gas_data)
-high_reg
+demand_plot = ggplot(high_con, aes(x = quantity, y = price_dollars))+
+  geom_smooth(method = "lm", se = FALSE)+
+  theme_classic()+
+  geom_smooth(data = low_con, aes(x = quantity, y = price_dollars), method = "lm", se = FALSE)
 
-high_mod = as.data.frame(predict(high_reg,data.frame(quantity=c(0:150000)))) %>% 
-  rename(quantity == predict(high_reg,data.frame(quantity=c(0:150000))))
-
-gas_ag_plot <- ggplot(gas_data, aes(x = quantity, y = price_dollars)) +
-  geom_smooth(aes(color = class))+
-  geom_smooth(high_mod, aes(x = predict(high_reg,data.frame(quantity=c(0:150000)))))
-
+demand_plot
 ```
 
 ***Part 2: How is the current consumer benefit divided?
