@@ -27,7 +27,11 @@ high_q = 147030.6 + -3293.0*p
 
 Qag = 292868.3 + -8495.5*p
 
+
 P_ag = 34.47334 + Q/-8495.5
+
+P_ag = 34.47334 - 
+
 
 ```{r}
 #equation math 
@@ -36,7 +40,6 @@ P_ag = 34.47334 + Q/-8495.5
 -5202.5 +-3293.0
 
 292868.3/8495.5
-
 
 ```
 
@@ -52,6 +55,9 @@ high_lm <- lm(price_dollars ~ quantity, data = high_con)
 
 high_lm <- lm(quantity ~ price_dollars, data = high_con)
 
+
+high_lm <- lm(quantity ~ price_dollars, data = high_con)
+
 summary(high_lm)
 
 low_con = gas_data %>% 
@@ -59,7 +65,11 @@ low_con = gas_data %>%
 
 #linear model for the low income gas users
 
+
 low_lm <- lm(price_dollars ~ quantity, data =low_con)
+
+low_lm <- lm(quantity ~ price_dollars, data =low_con)
+
 
 low_lm <- lm(quantity ~ price_dollars, data =low_con)
 
