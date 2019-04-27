@@ -32,7 +32,8 @@ low_con = gas_data %>%
 demand_plot = ggplot(high_con, aes(x = quantity, y = price_dollars))+
   geom_smooth(method = "lm", se = FALSE)+
   theme_classic()+
-  geom_smooth(data = low_con, aes(x = quantity, y = price_dollars), method = "lm", se = FALSE)
+  geom_smooth(data = low_con, aes(x = quantity, y = price_dollars), method = "lm", se = FALSE)+
+  geom_line(y = 2)
 
 demand_plot
 ```
