@@ -77,15 +77,15 @@ aggregate <- function(q)(22.6997 - (0.00006625*q))
 
 demand_plot = ggplot(gas_data, aes(y = price_dollars, x = quantity))+
   theme_classic()+
-  stat_function(fun = supply, color = "blue", size = 1, aes(colour = "Supply")) + #supply curve 
-  stat_function(fun = aggregate, color = "purple", size = 1, aes(colour = "Aggregated Demand Curve")) + #aggregated demand curve
-  stat_function(fun = msc, color = "green", size = 1, aes(colour = "Marginal Social Cost")) + #marginal social cost (marginal willingness to pay)
-  stat_function(fun = mec, color = "red", size = 1, aes(colour = "Marginal External Cost"))+
+  stat_function(fun = supply, size = 1, aes(colour = "Supply")) + #supply curve 
+  stat_function(fun = aggregate, size = 1, aes(colour = "Aggregated Demand Curve")) + #aggregated demand curve
+  stat_function(fun = msc, size = 1, aes(colour = "Marginal Social Cost")) + #marginal social cost (marginal willingness to pay)
+  stat_function(fun = mec, size = 1, aes(colour = "Marginal External Cost"))+
   scale_x_continuous(limits = c(0,310000), expand = c(0,0), labels = comma) +
   scale_y_continuous(limits = c(0,25), expand = c(0,0)) +
   labs(x = "Quantity of Gas (Gallons)",
        y = "Price of Gas (U.S. Dollars)") +
-  scale_color_manual("legend title", values = c("Supply", "Aggregated Demand Curve", "Marginal Social Cost", "Marginal External Cost"))
+  scale_colour_manual("legend title", values = c("Blue", "Green", "Purple", "Red"))
   
   
   
